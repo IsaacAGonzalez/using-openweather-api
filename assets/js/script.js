@@ -20,12 +20,14 @@ let requestOptions = {
 
 function writeCurrent(today) {
   let template = `
-    <h1>${today.name} (${DateTime.fromSeconds(today.dt).toLocaleString('D')}) <img src="http://openweathermap.org/img/w/${today.weather[0].icon}.png"><h1>
-    <ul>
-      <li>Temp: ${today.main.temp} °F</li>
-      <li>Wind: ${today.wind.speed} MPH</li>
-      <li>Humidity: ${today.main.humidity} %</li>
-    </ul>
+    <div style="border: solid black 2px;">
+      <h3>${today.name} (${DateTime.fromSeconds(today.dt).toLocaleString('D')}) <img src="http://openweathermap.org/img/w/${today.weather[0].icon}.png"><h3>
+      <ul style="list-style-type: none">
+        <li>Temp: ${today.main.temp} °F</li>
+        <li>Wind: ${today.wind.speed} MPH</li>
+        <li>Humidity: ${today.main.humidity} %</li>
+      </ul>
+    </div>
   `;
   todayBox.innerHTML = template;
   if (!searchHistory.includes(today.name)) {
@@ -42,10 +44,10 @@ function writeCurrent(today) {
 
 function writeForecast(future) {
   let template = `
-    <h2>5-Day Forecast:</h2>
+    <h4>5-Day Forecast:</h4>
     <div class="list-group list-group-horizontal">
       <li class="list-group-item">
-        <p>${DateTime.fromSeconds(future.list[3].dt).toLocaleString('D')}</p>
+        <h5>${DateTime.fromSeconds(future.list[3].dt).toLocaleString('D')}</h5>
         <img src="http://openweathermap.org/img/w/${future.list[3].weather[0].icon}.png">
         <ul>
           <li>Temp: ${future.list[3].main.temp} °F</li>
@@ -55,7 +57,7 @@ function writeForecast(future) {
       </li>
       
       <li class="list-group-item">
-        <p>${DateTime.fromSeconds(future.list[11].dt).toLocaleString('D')}</p>
+        <h5>${DateTime.fromSeconds(future.list[11].dt).toLocaleString('D')}</h5>
         <img src="http://openweathermap.org/img/w/${future.list[11].weather[0].icon}.png">
         <ul>
           <li>Temp: ${future.list[11].main.temp} °F</li>
@@ -65,7 +67,7 @@ function writeForecast(future) {
       </li>
 
       <li class="list-group-item">
-        <p>${DateTime.fromSeconds(future.list[19].dt).toLocaleString('D')}</p>
+        <h5>${DateTime.fromSeconds(future.list[19].dt).toLocaleString('D')}</h5>
         <img src="http://openweathermap.org/img/w/${future.list[19].weather[0].icon}.png">
         <ul>
           <li>Temp: ${future.list[19].main.temp} °F</li>
@@ -75,7 +77,7 @@ function writeForecast(future) {
       </li>
 
       <li class="list-group-item">
-        <p>${DateTime.fromSeconds(future.list[27].dt).toLocaleString('D')}</p>
+        <h5>${DateTime.fromSeconds(future.list[27].dt).toLocaleString('D')}</h5>
         <img src="http://openweathermap.org/img/w/${future.list[27].weather[0].icon}.png">
         <ul>
           <li>Temp: ${future.list[27].main.temp} °F</li>
@@ -85,7 +87,7 @@ function writeForecast(future) {
       </li>
 
       <li class="list-group-item">
-        <p>${DateTime.fromSeconds(future.list[35].dt).toLocaleString('D')}</p>
+        <h5>${DateTime.fromSeconds(future.list[35].dt).toLocaleString('D')}</h5>
         <img src="http://openweathermap.org/img/w/${future.list[35].weather[0].icon}.png">
         <ul>
           <li>Temp: ${future.list[35].main.temp} °F</li>
