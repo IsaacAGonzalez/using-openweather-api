@@ -21,7 +21,7 @@ let requestOptions = {
 function writeCurrent(today) {
   let template = `
     <div style="border: solid black 2px;">
-      <h3>${today.name} (${DateTime.fromSeconds(today.dt).toLocaleString('D')}) <img src="http://openweathermap.org/img/w/${today.weather[0].icon}.png"><h3>
+      <h3>${today.name} (${DateTime.fromSeconds(today.dt).toLocaleString('D')}) <img src="https://openweathermap.org/img/w/${today.weather[0].icon}.png"><h3>
       <ul style="list-style-type: none">
         <li>Temp: ${today.main.temp} °F</li>
         <li>Wind: ${today.wind.speed} MPH</li>
@@ -48,7 +48,7 @@ function writeForecast(future) {
     <div class="list-group list-group-horizontal">
       <li class="list-group-item">
         <h5>${DateTime.fromSeconds(future.list[3].dt).toLocaleString('D')}</h5>
-        <img src="http://openweathermap.org/img/w/${future.list[3].weather[0].icon}.png">
+        <img src="https://openweathermap.org/img/w/${future.list[3].weather[0].icon}.png">
         <ul>
           <li>Temp: ${future.list[3].main.temp} °F</li>
           <li>Wind: ${future.list[3].wind.speed} MPH</li>
@@ -58,7 +58,7 @@ function writeForecast(future) {
       
       <li class="list-group-item">
         <h5>${DateTime.fromSeconds(future.list[11].dt).toLocaleString('D')}</h5>
-        <img src="http://openweathermap.org/img/w/${future.list[11].weather[0].icon}.png">
+        <img src="https://openweathermap.org/img/w/${future.list[11].weather[0].icon}.png">
         <ul>
           <li>Temp: ${future.list[11].main.temp} °F</li>
           <li>Wind: ${future.list[11].wind.speed} MPH</li>
@@ -68,7 +68,7 @@ function writeForecast(future) {
 
       <li class="list-group-item">
         <h5>${DateTime.fromSeconds(future.list[19].dt).toLocaleString('D')}</h5>
-        <img src="http://openweathermap.org/img/w/${future.list[19].weather[0].icon}.png">
+        <img src="https://openweathermap.org/img/w/${future.list[19].weather[0].icon}.png">
         <ul>
           <li>Temp: ${future.list[19].main.temp} °F</li>
           <li>Wind: ${future.list[19].wind.speed} MPH</li>
@@ -78,7 +78,7 @@ function writeForecast(future) {
 
       <li class="list-group-item">
         <h5>${DateTime.fromSeconds(future.list[27].dt).toLocaleString('D')}</h5>
-        <img src="http://openweathermap.org/img/w/${future.list[27].weather[0].icon}.png">
+        <img src="https://openweathermap.org/img/w/${future.list[27].weather[0].icon}.png">
         <ul>
           <li>Temp: ${future.list[27].main.temp} °F</li>
           <li>Wind: ${future.list[27].wind.speed} MPH</li>
@@ -88,7 +88,7 @@ function writeForecast(future) {
 
       <li class="list-group-item">
         <h5>${DateTime.fromSeconds(future.list[35].dt).toLocaleString('D')}</h5>
-        <img src="http://openweathermap.org/img/w/${future.list[35].weather[0].icon}.png">
+        <img src="https://openweathermap.org/img/w/${future.list[35].weather[0].icon}.png">
         <ul>
           <li>Temp: ${future.list[35].main.temp} °F</li>
           <li>Wind: ${future.list[35].wind.speed} MPH</li>
@@ -101,7 +101,7 @@ function writeForecast(future) {
 }
 
 function weatherFetch(city) {
-  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIkey}`)
+  fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIkey}`)
     .then(response => response.text())
     .then(result => { cityInfo = JSON.parse(result) })
     .then(() => {
@@ -113,7 +113,7 @@ function weatherFetch(city) {
           writeCurrent(currentWeather);
         })
         .catch(error => console.log('error', error));
-      fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${cityInfo[0].lat}&lon=${cityInfo[0].lon}&units=imperial&appid=${APIkey}`, requestOptions)
+      fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${cityInfo[0].lat}&lon=${cityInfo[0].lon}&units=imperial&appid=${APIkey}`, requestOptions)
         .then(response => response.text())
         .then(result => {
           forecastWeather = JSON.parse(result);
